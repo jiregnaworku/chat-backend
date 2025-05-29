@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const userRoutes = require("./routes/userRoutes");
 
 const { Server } = require("socket.io");
 
@@ -26,6 +27,7 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/users", userRoutes);
 
 // ✅ Track online users
 const onlineUsers = new Map();
