@@ -1,12 +1,12 @@
 const dotenv = require("dotenv");
-
 const express = require("express");
 const http = require("http");
 const cors = require("cors");
+const path = require("path");
 const userRoutes = require("./routes/userRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 const { Server } = require("socket.io");
-
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const messageRoutes = require("./routes/messageRoutes");
@@ -24,10 +24,14 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/users", profileRoutes);
 
 // ✅ Track online users
 const onlineUsers = new Map();
