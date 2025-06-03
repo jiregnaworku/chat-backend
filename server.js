@@ -19,14 +19,19 @@ const server = http.createServer(app);
 
 // CORS configuration
 const corsOptions = {
-  origin: ['http://localhost:52236', 'http://localhost:3000', 'https://chat-app-85hp.web.app'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  origin: [
+    "http://localhost:52002",
+    "http://localhost:52236",
+    "http://localhost:3000",
+    "https://chat-app-85hp.web.app",
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 const io = new Server(server, {
-  cors: corsOptions
+  cors: corsOptions,
 });
 
 // Middleware
@@ -34,7 +39,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Serve static files from uploads directory
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 app.use("/api/auth", authRoutes);
