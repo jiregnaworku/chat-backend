@@ -20,14 +20,16 @@ const server = http.createServer(app);
 // CORS configuration
 const corsOptions = {
   origin: [
-    "http://localhost:52002",
-    "http://localhost:52236",
-    "http://localhost:3000",
-    "https://chat-app-85hp.web.app",
+    /^http:\/\/localhost(:\d+)?$/, // Match any localhost with any port
+    /^http:\/\/10\.0\.2\.2(:\d+)?$/, // Android emulator localhost
+    /^http:\/\/127\.0\.0\.1(:\d+)?$/, // Localhost alternative
+    "https://chat-backend-85hp.onrender.com"
   ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-auth-token"],
   credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204
 };
 
 const io = new Server(server, {
@@ -36,6 +38,7 @@ const io = new Server(server, {
 
 // Middleware
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Enable pre-flight for all routes
 app.use(express.json());
 
 // Serve static files from uploads directory

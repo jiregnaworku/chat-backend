@@ -92,4 +92,4 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 
 Contact
-For questions or support, contact jiregnaworku.
+For questions or support, contact [jiregnaworku](https://github.com/jiregnaworku).
