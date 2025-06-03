@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema(
       default: 'Hey there! I am using ChatApp',
       trim: true
     },
+    profilePicture: {
+      type: String,
+      default: 'https://res.cloudinary.com/demo/image/upload/v1627930769/default-avatar_rs3qjq.png'
+    }
   },
   { 
     timestamps: true,
