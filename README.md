@@ -92,4 +92,8 @@ Contributions are welcome! Feel free to open issues or submit pull requests.
 
 
 Contact
+<<<<<<< HEAD
 For questions or support, contact [jiregnaworku](https://github.com/jiregnaworku).
+=======
+For questions or support, contact [jiregnaworku]https://github.com/jiregnaworku
+>>>>>>> bf88a8e07b8a03c0489dfe12e512680d282f6cbe
